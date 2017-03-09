@@ -16,6 +16,11 @@ git push origin master
 # Pushes the changes in your local repository up to the remote repository you specified as the origin
 
 
+# after every change
+git add .
+git commit -m "second commit"
+git remote -v
+git push origin master
 
 experiment one
 create an ubuntu server with a specific ipaddress
