@@ -96,6 +96,16 @@ sudo docker tag 9a9e0ffc7f05 josephtrohak/ubuntu-updated:latest
 sudo docker push josephtrohak/ubuntu-updated:latest
 
 # find data creator 
+http://www.mockaroo.com/
+http://www.openwall.com/wordlists/
+http://wiki.c2.com/?TestDataGenerator
+http://www12.statcan.gc.ca/census-recensement/index-eng.cfm
+http://mirrors.kernel.org/openwall/wordlists/
+
+
+
+
+
 # create population of country, addresses, phone numbers, sex, age data, based on census data
 # create customer id's; population of 10 million
 # create products and services database
