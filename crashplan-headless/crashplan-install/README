@@ -1,0 +1,17 @@
+README and Basic Documentation:
+This README contains basic installation instructions for the CrashPlan app. For complete and up-to-date information, refer to our support site at support.code42.com.
+After installing, you may also refer to the README files located in the installed software location (default: /usr/local/crashplan/doc/).
+
+Installation Instructions:
+1) Navigate to the extracted CrashPlan-install directory:
+    cd ~/Download/CrashPlan-install
+2) Execute the install.sh script:
+    ./install.sh
+3) Follow the prompts in the installation script.
+
+Installation Notes:
+- The CrashPlan app uses the Oracle Java<TM> Runtime Environment (JRE) to run.  If you do not have a compatible Oracle JRE installed, the installation script downloads and installs it alongside CrashPlan. This does not overwrite your system's installed Java.
+- Once installed, the CrashPlan app can be launched by using the command 'CrashPlanDesktop', which is linked from a directory chosen during installation (default: /usr/local/bin/CrashPlanDesktop).
+- The CrashPlan service is installed and configured to run from a directory chosen during installation (default: etc/init.d/crashplan) and linked from '/etc/rc2.d'.
+- On some Linux distributions, you may need to add the following to '/etc/init.d/boot.local':
+    /etc/init.d/crashplan start

@@ -40,6 +40,8 @@ git commit -m "date and comment"
 git remote -v
 git push origin master
 
+
+
 # login to your docker environment
 sudo docker login -u userid -p password
 
@@ -106,6 +108,23 @@ docker run -d \
   --volume /srv/crashplan/data:/var/crashplan \
   --volume /srv/crashplan/storage:/storage \
   jrcs/crashplan:latest
+
+https://github.com/jlesage/docker-crashplan
+docker pull jlesage/crashplan
+
+docker run -d \
+    --name=crashplan \
+    -p 5800:5800 \
+    -v /docker/appdata/crashplan:/config:rw \
+    -v $HOME:/storage:ro \
+    jlesage/crashplan
+
+docker run -d \
+    --name=crashplan \
+    -p 5900:5900 \
+    -v /docker/appdata/crashplan:/config:rw \
+    -v $HOME:/storage:ro \
+    jlesage/crashplan
 
 # /var/crashplan: where the configuration files and logs are store
 # /storage: where backup files are store

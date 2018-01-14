@@ -1,0 +1,19 @@
+Welcome to CrashPlan for Linux!
+------------------------------------------------------------------------
+
+To install CrashPlan run the installer in this directory:
+
+./install.sh
+
+and follow the instructions.
+
+
+To uninstall CrashPlan run the uninstaller in this directory with
+the path that you installed CrashPlan to:
+
+./uninstall.sh /usr/local/crashplan
+
+When uninstalling CrashPlan, you will have the option of removing the
+application, but preserving the backup data you are storing for others
+for use by a future installation of CrashPlan.  Please read uninstall
+instructions carefully when running the script above.
