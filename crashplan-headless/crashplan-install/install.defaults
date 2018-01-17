@@ -1,4 +1,0 @@
-APP_BASENAME=CrashPlan
-DIR_BASENAME=crashplan
-JRE_X64_DOWNLOAD_URL=http://download.code42.com/installs/proserver/jre/jre-linux-x64-1.8.0_72.tgz
-JRE_I586_DOWNLOAD_URL=http://download.code42.com/installs/proserver/jre/jre-linux-i586-1.8.0_72.tgz

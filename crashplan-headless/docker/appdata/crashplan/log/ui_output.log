@@ -1,0 +1,24 @@
+[01.14.18 18:29:14.311 INFO  main           com.backup42.desktop.CPDesktop] *************************************************************
+[01.14.18 18:29:14.315 INFO  main           com.backup42.desktop.CPDesktop] *************************************************************
+[01.14.18 18:29:14.315 INFO  main           com.backup42.desktop.CPDesktop] STARTED CrashPlanDesktop
+[01.14.18 18:29:14.317 INFO  main           com.backup42.desktop.CPDesktop] CPVERSION = 4.8.4 - 1436674800484 (2015-07-12T04:20:00:484+0000) - Build: 15
+[01.14.18 18:29:14.318 INFO  main           com.backup42.desktop.CPDesktop] ARGS      = []
+[01.14.18 18:29:14.325 INFO  main           com.backup42.desktop.CPDesktop] LOCALE    = English (United States)
+[01.14.18 18:29:14.325 INFO  main           com.backup42.desktop.CPDesktop] JVM       = Java(TM) SE Runtime Environment (1.8.0_72-b15, 64-bit)
+[01.14.18 18:29:14.325 INFO  main           com.backup42.desktop.CPDesktop] OS        = Linux (4.13.0-26-generic, amd64)
+[01.14.18 18:29:14.325 INFO  main           com.backup42.desktop.CPDesktop] User      = app, /dev/null
+[01.14.18 18:29:14.325 INFO  main           com.backup42.desktop.CPDesktop] swt.library.path = /tmp/.cpswt
+[01.14.18 18:29:14.325 INFO  main           com.backup42.desktop.CPDesktop] *************************************************************
+[01.14.18 18:29:14.326 INFO  main           com.backup42.desktop.CPDesktop] SWT library dir created: /tmp/.cpswt
+[01.14.18 18:29:14.328 INFO  main          com.code42.swt.util.SWTPathUtil] Found and loading lib/org.eclipse.swt.gtk.linux.x86_64.jar
+[01.14.18 18:29:14.329 INFO  main          com.code42.lang.ClassPathHacker] [file:/usr/local/crashplan/lib/com.backup42.desktop.jar, file:/usr/local/crashplan/lang/, file:/usr/local/crashplan/skin/, file:/usr/local/crashplan/, file:/usr/local/crashplan/lib/org.eclipse.swt.gtk.linux.x86_64.jar]
+[01.14.18 18:29:14.660 INFO  main         ckup42.desktop.model.ConfigModel] ConfigModel.loaded=false
+[01.14.18 18:29:14.660 INFO  main         ckup42.desktop.model.ConfigModel] ConfigModel.configDateMs=null
+[01.14.18 18:29:14.700 INFO  main          com.backup42.desktop.CpdFolders] CpdFolders: appData = /usr/local/crashplan/
+[01.14.18 18:29:14.717 INFO  main         p42.desktop.CpdFoldersDeprecated] CpdFoldersMigrate is not necessary. /var/lib/crashplan/my.ui.properties file does not exists.
+[01.14.18 18:29:14.721 INFO  main           com.backup42.desktop.CPDesktop] Waiting for .ui_info file to appear in /var/lib/crashplan/.ui_info
+[01.14.18 18:29:14.724 INFO  main           com.backup42.desktop.CPDesktop] Waited 0ms for .ui_info to appear in /var/lib/crashplan/.ui_info, exists=true
+[01.14.18 18:29:14.725 INFO  main         ackup42.service.ui.UIInfoUtility] Loaded address=127.0.0.1, port=4243, and token from location=/var/lib/crashplan/.ui_info
+[01.14.18 18:29:14.727 INFO  main           com.backup42.desktop.CPDesktop] Log file: /usr/local/crashplan/log/ui_app.log
+jtux64 Loaded.
+32

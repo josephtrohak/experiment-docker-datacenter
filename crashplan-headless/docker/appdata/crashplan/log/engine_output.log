@@ -1,0 +1,26 @@
+[01.14.18 18:29:00.863 INFO  main           com.backup42.service.CPService] Locale set to English
+[01.14.18 18:29:00.864 INFO  main           com.backup42.service.CPService] *************************************************************
+[01.14.18 18:29:00.864 INFO  main           com.backup42.service.CPService] *************************************************************
+[01.14.18 18:29:00.864 INFO  main           com.backup42.service.CPService] STARTED CrashPlanService
+[01.14.18 18:29:00.865 INFO  main           com.backup42.service.CPService] CPVERSION = 4.8.4 - 1436674800484 (2015-07-12T04:20:00:484+0000) - Build: 15
+[01.14.18 18:29:00.866 INFO  main           com.backup42.service.CPService] LOCALE = English (United States)
+[01.14.18 18:29:00.866 INFO  main           com.backup42.service.CPService] ARGS = []
+[01.14.18 18:29:00.866 INFO  main           com.backup42.service.CPService] *************************************************************
+[01.14.18 18:29:01.269 INFO  main           com.backup42.service.CPService] Adding shutdown hook.
+[01.14.18 18:29:01.319 INFO  main           com.backup42.service.CPService] loadConfig, BEGIN Loading Configuration
+[01.14.18 18:29:01.366 INFO  main          com.backup42.service.CpsFolders] CpsFolders chmod successful. confPath=conf/
+[01.14.18 18:29:01.366 INFO  main           com.backup42.service.CPService] BEGIN Copy Custom
+[01.14.18 18:29:01.366 INFO  main           com.backup42.service.CPService]   Directories: [.Custom, custom, /repository/.Custom, /repository/custom]
+[01.14.18 18:29:01.366 INFO  main           com.backup42.service.CPService]   NOT waiting for custom skin to appear
+[01.14.18 18:29:01.366 INFO  main           com.backup42.service.CPService]   NO customizations found.
+[01.14.18 18:29:01.370 INFO  main           com.backup42.service.CPService] END Copy Custom
+[01.14.18 18:29:01.373 INFO  main         backup42.common.config.AppConfig]   Loading from default: , /usr/local/crashplan/conf/default.service.xml
+[01.14.18 18:29:01.600 INFO  main         backup42.common.config.AppConfig]   Loading from my xml file:, conf/my.service.xml
+[01.14.18 18:29:01.693 WARN  main         up42.common.config.ServiceConfig] ServiceConfig:: ServiceConfig version higher than it should be. uniqueId=830819381704020872
+[01.14.18 18:29:01.719 INFO  main         up42.common.config.ServiceConfig] ServiceConfig::   Loading ServiceConfig, newInstall=false, configVersion=11, configDateMs=1515953811034, installVersion=1436674800484, currentVersion=1436674800484
+[01.14.18 18:29:01.720 INFO  main         up42.common.config.ServiceConfig] ServiceConfig::   OS = Linux
+[01.14.18 18:29:01.869 INFO  main           com.backup42.service.CPService]   AuthorityLocation@986939266[ location=central.crashplan.com:443, hideAddress=false, isLocked=false ]
+[01.14.18 18:29:01.870 INFO  main           com.backup42.service.CPService]   Checking Java memory heap max.
+[01.14.18 18:29:01.871 INFO  main           com.backup42.service.CPService]     Previous Java memory max heap size was 1024
+[01.14.18 18:29:01.874 INFO  main           com.backup42.service.CPService] END Loading Configuration
+jtux64 Loaded.
