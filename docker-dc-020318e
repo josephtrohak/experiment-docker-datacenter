@@ -1,0 +1,300 @@
+# ----------------------------------------
+# initial setup of development environment
+# ----------------------------------------
+
+
+# install git, docker and kube
+sudo apt-get install git docker
+
+
+# create a directory
+mkdir experiment-docker-datacenter
+
+# copies the files from the remote repo to your local directory
+git clone https://github.com/josephtrohak/experiment-docker-datacenter.git
+
+# set up your credentials
+git config --global user.email "fn.ln@gmail.com"
+
+# Initialize the local directory as a Git repository.
+git init
+
+# Adds the files in the local repository and stages them for commit. To unstage a file, use 'git reset HEAD YOUR-FILE'.
+git add .
+
+git commit -m "First commit"
+
+# git remote add origin remote repository URL
+# Sets the new remote
+git remote add origin https://github.com/josephtrohak/experiment-docker-datacenter.git
+
+# Verifies the new remote URL
+git remote -v
+
+# Pushes the changes in your local repository up to the remote repository you specified as the origin
+git push origin master
+
+# after every change
+git add .
+git commit -m "date and comment"
+git remote -v
+git push origin master
+
+
+
+# login to your docker environment
+sudo docker login -u userid -p password
+
+# when ready to begin deploying production docker images
+# install kubernetes
+# https://www.techrepublic.com/article/how-to-quickly-install-kubernetes-on-ubuntu/
+sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
+deb http://apt.kubernetes.io/ kubernetes-xenial main 
+apt-get update
+apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+
+
+# ----------------------------------------
+# experiment 
+# create an ubuntu server with a specific ipaddress
+# ----------------------------------------
+# First you need to create you own docker network (mynet123)
+docker network create --subnet=172.18.0.0/16 mynet123
+# than simply run the image (I'll take ubuntu as example)
+docker run --net mynet123 --ip 172.18.0.22 -it ubuntu bash
+ip addr
+sudo docker network rm mynet123
+
+
+# then in ubuntu shell
+ip addr
+# Additionally you could use
+# --hostname to specify a hostname
+# --add-host to add more entries to /etc/hosts
+# Docs (and why you need to create a network) at https://docs.docker.com/engine/reference/commandline/network_create/
+
+# ----------------------------------------
+# experiment 
+# create an ubuntu server with a specific hostname
+# ----------------------------------------
+
+sudo docker run -h tester.meruslab.org -i -t ubuntu bash
+
+docker run -h foo.bar.baz -i -t ubuntu bash
+# runs a container with the hostname foo with the fqdn .bar.baz
+#
+root@foo:/# hostname
+foo
+root@foo:/# hostname -d
+bar.baz
+root@foo:/# hostname -f
+foo.bar.baz
+
+# ----------------------------------------
+# experiment  
+# create specific images from base ubuntu images 
+# crashplan headless
+# (web JWS, app FUSE, database ORACLE, SQL and CLOUDERA, ldap and AD, nagios, logserver ARCSIGHT LOGLOGIC, jobserver AUTOSYS, feedhub FTP, messaging MQ and SOLACE)
+# ----------------------------------------
+
+docker pull jrcs/crashplan
+https://hub.docker.com/r/jrcs/crashplan/
+
+docker run -d \
+    --name=crashplan \
+    -p 5800:5800 \
+    -v /docker/appdata/crashplan:/config:rw \
+    -v $HOME:/storage:ro \
+    jlesage/crashplan
+
+docker run -d \
+    --name=crashplan \
+    -p 5900:5900 \
+    -v /docker/appdata/crashplan:/config:rw \
+    -v $HOME:/storage:ro \
+    jlesage/crashplan
+
+sudo docker run -d -p 5800:5800 --name=crashplan -v /home/merus/Desktop/experiment-docker-datacenter/docker/crashplan-headless:/config:rw -v $HOME:/storage:ro josephtrohak/merus-crashplan
+
+sudo docker run -d --name=crashplan -p 5800:5800 --memory=1024MB --cpus=1 -v /home/merus/Desktop/experiment-docker-datacenter/docker/crashplan-headless:/config:rw -v /home/merus/Desktop:/storage:ro josephtrohak/merus-crashplan
+
+#prod
+sudo docker run -d --name=crashplan -p 5800:5800 --memory=1024MB --cpus=1 -v /home/merus/Desktop/downloads/docker/crashplan:/config:rw -v /media/backup/backup:/storage:ro josephtrohak/merus-crashplan
+
+#prod - backup seemed slow, changing from bridge network to host (doesnt work.. sigh)
+sudo docker run --net=host -d --name=crashplan -p 5800:5800 --memory=1024MB --cpus=1 -v /home/merus/Desktop/downloads/docker/crashplan:/config:rw -v /media/backup/backup:/storage:ro josephtrohak/merus-crashplan
+
+#prod
+sudo docker run -d --name=crashplan -p 5800:5800 --memory=1024MB --cpus=1 -v /home/merus/Desktop/downloads/docker/crashplan:/config:rw -v /media/backup/backup:/media:ro josephtrohak/merus-crashplan
+
+
+# ----------------------------------------
+# experiment  
+# create specific images from base ubuntu images 
+# plex server
+# (web JWS, app FUSE, database ORACLE, SQL and CLOUDERA, ldap and AD, nagios, logserver ARCSIGHT LOGLOGIC, jobserver AUTOSYS, feedhub FTP, messaging MQ and SOLACE)
+# ----------------------------------------
+
+# docker run -d --name plex --network=host -e TZ="<timezone>" -e PLEX_CLAIM="<claimToken>" -v <path/to/plex/database>:/config -v <path/to/transcode/temp>:/transcode -v <path/to/media>:/data plexinc/pms-docker
+
+# sudo docker run -d --name plex --network=host -e TZ="<timezone>" -e PLEX_CLAIM="<claimToken>" -v /home/merus/Desktop/experiment-docker-datacenter/docker/merus-plex/config:/config -v /home/merus/Desktop/experiment-docker-datacenter/docker/merus-plex/transcode:/transcode -v /home/merus/Desktop/downloads/media:/data plexinc/pms-docker
+
+# access via http://localhost:32400/web
+
+
+# /var/crashplan: where the configuration files and logs are store
+# /storage: where backup files are store
+# Access the GUI from your desktop crashplan application
+# Make a backup of the current .ui_info file of your desktop machine locate:
+# On Linux: /var/crashplan/data/id/.ui_info
+# On OSX: /Library/Application Support/CrashPlan/.ui_info
+# On Windows: C:\ProgramData\CrashPlan\.ui_info
+# Replace your .ui_info file of your desktop machine with the one of the crashplan container: /srv/crashplan/data/id/.ui_info.
+# In the .ui_info file of your desktop machine, replace the IP (should be 0.0.0.0 or 127.0.0.1) # with the IP of your docker host.
+# Make sure you can connect to ports 4242 and 4243 on your docker host.
+# Start your local CrashPlan GUI.
+
+# ----------------------------------------
+# experiment  
+# create specific images from base ubuntu images 
+# aws-cli container
+# (web JWS, app FUSE, database ORACLE, SQL and CLOUDERA, ldap and AD, nagios, logserver ARCSIGHT LOGLOGIC, jobserver AUTOSYS, feedhub FTP, messaging MQ and SOLACE)
+# ----------------------------------------
+
+docker pull fstab/aws-cli
+
+https://hub.docker.com/r/fstab/aws-cli/
+
+
+
+
+# ----------------------------------------
+# experiment 
+# create specific images from base ubuntu images 
+# nagios
+# (web JWS, app FUSE, database ORACLE, SQL and CLOUDERA, ldap and AD, nagios, logserver ARCSIGHT LOGLOGIC, jobserver AUTOSYS, feedhub FTP, messaging MQ and SOLACE)
+# ----------------------------------------
+
+# creates a container labelled myname using the image ubuntu and executes the command cat /etc/debian_version
+docker run --name myname  ubuntu cat /etc/debian_version
+
+# launches container based on image named ubuntu-updated and runs bash interactively
+sudo docker run -h tester.meruslab.org -i -t ubuntu-updated bash
+apt-get update
+apt-get install sudo 
+apt-get install apt-utils
+apt-get install net-tools 
+exit 
+
+# gets the ID/name of the image after its been run
+docker ps -l
+
+# commits the changes you made to the base image to a NEW image labelled ubuntu-updated
+sudo docker commit f75ba7ea52ee ubuntu-updated
+
+# launches container based on image named ubuntu-updated and runs bash interactively
+sudo docker run -h tester.meruslab.org -i -t ubuntu-updated bash
+apt-get install nagios3
+
+# commits the changes you made to the base image to a NEW image labelled ubuntu-nagios
+sudo docker commit f75ba7ea52ee ubuntu-nagios
+
+# repeat for each image type
+
+# two approaches
+# create dockerfile for each system type to automate creation of files.
+# manually create each image type
+
+docker run
+
+sudo docker login -u userid -p password
+# identify image ID
+sudo docker images
+sudo docker tag 036969d45204 josephtrohak/ubuntu-nagios:latest
+sudo docker push josephtrohak/ubuntu-nagios:latest
+sudo docker tag 9a9e0ffc7f05 josephtrohak/ubuntu-updated:latest
+sudo docker push josephtrohak/ubuntu-updated:latest
+
+# you should also run tests against it using selenium and store the test
+# then deploy in kube and run tests
+# then try to crash it using the kube testing sw
+
+
+
+
+# ----------------------------------------
+# experiment 
+# create specific images from base ubuntu images 
+# mongodb
+# (web JWS, app FUSE, database ORACLE, SQL and CLOUDERA, ldap and AD, nagios, logserver ARCSIGHT LOGLOGIC, jobserver AUTOSYS, feedhub FTP, messaging MQ and SOLACE)
+# ----------------------------------------
+
+# find data creator 
+http://www.mockaroo.com/
+http://www.openwall.com/wordlists/
+http://wiki.c2.com/?TestDataGenerator
+http://www12.statcan.gc.ca/census-recensement/index-eng.cfm
+http://mirrors.kernel.org/openwall/wordlists/
+
+# create an image from a dockerfile
+# tag it with the name merus-mongodb2 which will auto populate into the local repository
+# and use the filename merus-dockerfile-031217a for the creation of the image creation
+sudo docker build -t merus-mongodb2 -f /home/merus/Desktop/experiment-docker-datacenter/mongo-db/merus-dockerfile-031217a . 
+
+# ----------------------------------------
+# experiment six
+# create specific images from base ubuntu images 
+# ldap
+# (web JWS, app FUSE, database ORACLE, SQL and CLOUDERA, ldap and AD, nagios, logserver ARCSIGHT LOGLOGIC, jobserver AUTOSYS, feedhub FTP, messaging MQ and SOLACE)
+# ----------------------------------------
+
+
+
+# set up an ldap server
+sudo apt install samba smbldap-tools
+
+
+
+
+# create population of country, addresses, phone numbers, sex, age data, based on census data
+# create customer id's; population of 10 million
+# create products and services database
+# create 100k employee id's and email addresses; including authorizations (6 levels) including SUDO id's and pswds
+# create server id's; 100 groups, 10 functional id's per server, 10k servers
+# create IP address ranges
+# create 100 IT services
+# create LDAP and SAMBA server
+
+# http://www.generatedata.com/
+# https://kubernetes.io/docs/
+
+# create a samba4 server with an AD domain controller and LDAP
+# then populate with 30k userid's and passwords
+# include 5000 servers
+# include 1000 functional_id's
+# create 100 groups: servers, users, server_admin, db_admin, network_admin, storage_admin, app_admin, security_admin, developer, tester-qa, tester-load, employees, managers, directors, senior-directors, vp, svp, sevp, president, audit, tools-admin, 
+
+
+https://www.tecmint.com/install-samba4-active-directory-ubuntu/
+
+sudo apt-get install samba krb5-user krb5-config winbind libpam-winbind libnss-winbind
+make sure kerberos, domain and realm are all the same: meruslab.org
+
+sudo systemctl stop samba-ad-dc.service smbd.service nmbd.service winbind.service
+sudo systemctl disable samba-ad-dc.service smbd.service nmbd.service winbind.service
+sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.initial
+sudo samba-tool domain provision --use-rfc2307 --interactive
+password: somethingnice
+
+sudo mv /etc/krb5.conf /etc/krb5.conf.initial
+sudo ln –s /var/lib/samba/private/krb5.conf /etc/
+ls -l /etc/krb5.conf
+
+sudo netstat –tulpn| egrep ‘smbd|samba’
+# doesn't work :(
+
+sudo samba-tool domain level show
+response should be:
+
+Domain and forest function level for domain 'DC=meruslab,DC=org'
+
