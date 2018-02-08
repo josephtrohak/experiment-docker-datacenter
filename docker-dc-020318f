@@ -137,8 +137,13 @@ sudo docker run -d --name=crashplan -p 5800:5800 --memory=1024MB --cpus=1 -v /ho
 
 # docker run -d --name plex --network=host -e TZ="<timezone>" -e PLEX_CLAIM="<claimToken>" -v <path/to/plex/database>:/config -v <path/to/transcode/temp>:/transcode -v <path/to/media>:/data plexinc/pms-docker
 
+# sudo docker run -d --name plex --network=host -e TZ="<timezone>" -e PLEX_CLAIM="<claimToken>" -v /home/merus/Desktop/downloads/docker/plex/config:/config -v /home/merus/Desktop/downloads/docker/plex/transcode:/transcode -v /media/backup/backup/media:/data plexinc/pms-docker
+
 #prod
 # sudo docker run -d --name plex --network=host -e TZ="<timezone>" -e PLEX_CLAIM="<claimToken>" -v /home/merus/Desktop/downloads/docker/plex/config:/config -v /home/merus/Desktop/downloads/docker/plex/transcode:/transcode -v /media/backup/backup/media:/data plexinc/pms-docker
+
+#prod final
+sudo docker run -d --name plex --network=host --memory=1024MB --cpus=1 -e TZ="<timezone>" -e PLEX_CLAIM="<claimToken>" -v /home/merus/Desktop/downloads/docker/plex/config:/config -v /home/merus/Desktop/downloads/docker/plex/transcode:/transcode -v /media/backup/backup/media:/data plexinc/pms-docker
 
 # access via http://localhost:32400/web
 
