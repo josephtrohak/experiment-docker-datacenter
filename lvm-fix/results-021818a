@@ -1,0 +1,70 @@
+c and d are about to fail..
+
+make a secondary drive out of them
+
+
+b
+Model Family:     Hitachi Deskstar 7K1000.B
+Device Model:     Hitachi HDT721010SLA360
+Serial Number:    STF607MH382S2K
+LU WWN Device Id: 5 000cca 349edf3c8
+Firmware Version: ST6OA31B
+User Capacity:    1,000,204,886,016 bytes [1.00 TB]
+Sector Size:      512 bytes logical/physical
+Rotation Rate:    7200 rpm
+Device is:        In smartctl database [for details use: -P show]
+ATA Version is:   ATA8-ACS T13/1699-D revision 4
+SATA Version is:  SATA 2.6, 3.0 Gb/s
+Local Time is:    Sun Feb 18 22:02:28 2018 EST
+SMART support is: Available - device has SMART capability.
+SMART support is: Enabled
+
+c
+Model Family:     Hitachi/HGST Deskstar 7K4000
+Device Model:     Hitachi HDS724040ALE640
+Serial Number:    PK1310PAG152MJ
+LU WWN Device Id: 5 000cca 22bc08775
+Firmware Version: MJAOA3B0
+User Capacity:    4,000,787,030,016 bytes [4.00 TB]
+Sector Sizes:     512 bytes logical, 4096 bytes physical
+Rotation Rate:    7200 rpm
+Form Factor:      3.5 inches
+Device is:        In smartctl database [for details use: -P show]
+ATA Version is:   ATA8-ACS T13/1699-D revision 4
+SATA Version is:  SATA 3.0, 6.0 Gb/s (current: 3.0 Gb/s)
+Local Time is:    Sun Feb 18 22:03:19 2018 EST
+SMART support is: Available - device has SMART capability.
+SMART support is: Enabled
+
+d
+Model Family:     SAMSUNG SpinPoint F1 DT
+Device Model:     SAMSUNG HD103UJ
+Serial Number:    S13PJDWQ710976
+LU WWN Device Id: 5 0000f0 003179067
+Firmware Version: 1AA01113
+User Capacity:    1,000,204,886,016 bytes [1.00 TB]
+Sector Size:      512 bytes logical/physical
+Device is:        In smartctl database [for details use: -P show]
+ATA Version is:   ATA/ATAPI-7, ATA8-ACS T13/1699-D revision 3b
+Local Time is:    Sun Feb 18 22:05:39 2018 EST
+SMART support is: Available - device has SMART capability.
+SMART support is: Enabled
+
+e
+Model Family:     Seagate Barracuda Green (AF)
+Device Model:     ST2000DL003-9VT166
+Serial Number:    6YD16SWN
+LU WWN Device Id: 5 000c50 045b30f39
+Firmware Version: CC3C
+User Capacity:    2,000,398,934,016 bytes [2.00 TB]
+Sector Sizes:     512 bytes logical, 4096 bytes physical
+Rotation Rate:    5900 rpm
+Device is:        In smartctl database [for details use: -P show]
+ATA Version is:   ATA8-ACS T13/1699-D revision 4
+SATA Version is:  SATA 3.0, 6.0 Gb/s (current: 1.5 Gb/s)
+Local Time is:    Sun Feb 18 22:06:17 2018 EST
+SMART support is: Available - device has SMART capability.
+SMART support is: Enabled
+
+
+
