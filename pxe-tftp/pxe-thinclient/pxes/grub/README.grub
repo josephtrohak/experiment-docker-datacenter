@@ -1,0 +1,48 @@
+PXEGRUB and NBGRUB
+------------------
+GRUB is available at http://www.gnu.org/software/grub/.
+PXES 0.8 includes pxegrub and nbgrub 0.93 supporting this list of NIC
+* 3Com900-TPO
+* 3Com900-Combo
+* 3Com905-TX
+* 3Com905-T4
+* 3Com900B-TPO
+* 3Com900B-Combo
+* 3Com900B-2/T
+* 3Com900B-FL
+* 3Com905B-TX
+* 3Com905B-T4
+* 3Com905B-FL
+* 3Com905C-TXM
+* 3Com980-Cyclone
+* 3Com9805
+* 3CSOHO100-TX
+* 3Com590
+* 3Com595
+* Intel EtherExpressPro100
+* AMD Lance/PCI
+* AMD Lance/HomePNA
+* VIA 6102
+* VIA 3043
+* VIA 86C100A
+* 3C595
+* 3C90X
+* EEPRO100
+* LANCE/PCI
+* VIA 86C100
+* Intel EtherExpressPro100 82559ER
+* Intel EtherExpressPro100 ID1029
+* Intel Corporation 82559 InBusiness 10/100
+* Intel EtherExpressPro100 82562EM
+* LANCE 7990
+* PCnet/ISA 79C960
+* PCnet/ISA+ 79C961
+* PCnet/PCI 79C970
+* PCnet32
+* PCnet/PCI-II 79C970A
+* PCnet-FAST III 79C973
+* PCnet/HomePNA 79C978
+
+Although you can compile GRUB and add support for the NIC card you are
+using.
+

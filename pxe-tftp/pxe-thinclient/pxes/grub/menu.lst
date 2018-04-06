@@ -1,0 +1,18 @@
+#-----------------------------------------------------------------------
+#      ___       ___ ___   P X E S   Universal  Linux  Thin  Client
+#     /__/\\_// /__ /__    Copyright(C) 2003 by Diego Torres Milano
+#    /    // \\/__  __/    All rights reserved.  http://pxes.sf.net
+#-----------------------------------------------------------------------
+# $Id: menu.lst,v 1.7 2004/08/06 04:23:31 diego Exp $
+default=0
+timeout=10
+# Uncomment next line to hide the menu
+#hiddenmenu
+splashimage=(nd)/pxes/grub/pxes2-splash.xpm.gz
+root (nd)
+title PXES Linux Thin Client (2.4.20-12pxes squash)
+	kernel /pxes/vmlinuz-2.4.20-12pxes.i586 ro console=null video=vesa vga=0x303 root=/dev/ram ramdisk_size=16384
+	initrd /pxes/pxes-0.9.squash
+title PXES Linux Thin Client (2.4.20-12pxes ask)
+	kernel /pxes/vmlinuz-2.4.20-12pxes.i586 ro root=/dev/ram sd=ask ramdisk_size=65535
+	initrd /pxes/pxes-0.9.initrd

@@ -1,0 +1,40 @@
+#----------------------------------------------------------------------
+#      ___       ___ ___   P X E S   Universal  Linux  Thin  Client
+#     /__/\\_// /__ /__    Copyright(C) 2003 by Diego Torres Milano
+#    /    // \\/__  __/    All rights reserved.  http://pxes.sf.net
+#
+# Author: Diego Torres Milano <diego@in3.com.ar>
+# $Id: default,v 1.7 2004/08/06 04:21:37 diego Exp $
+#----------------------------------------------------------------------
+
+default 1
+prompt 1
+timeout 600
+display pxes.msg
+F0 pxes.msg
+F1 helpopt.msg
+
+label 1
+   kernel vmlinuz-2.4.20-12pxes.i586
+   append ramdisk_size=16384 ro video=vesa vga=771 console=null initrd=pxes-0.9.squash root=/dev/ram
+
+label pxes
+   kernel vmlinuz-2.4.20-12pxes.i586
+   append ramdisk_size=32768 ro initrd=pxes-0.9.initrd root=/dev/ram
+
+label 2
+   kernel vmlinuz-2.4.20-12pxes.i586
+   append ramdisk_size=32768 ro video=vesa vga=771 console=null initrd=pxes-0.9.initrd root=/dev/ram
+
+label initrd
+   kernel vmlinuz-2.4.20-12pxes.i586
+   append ramdisk_size=32768 ro video=vesa vga=771 console=null initrd=pxes-0.9.initrd root=/dev/ram
+
+label 3
+   kernel vmlinuz-2.4.20-12pxes.i586
+   append ramdisk_size=16384 ro console=null initrd=pxes-0.9.squash root=/dev/ram
+
+label novesa
+   kernel vmlinuz-2.4.20-12pxes.i586
+   append ramdisk_size=16384 ro console=null initrd=pxes-0.9.squash root=/dev/ram
+

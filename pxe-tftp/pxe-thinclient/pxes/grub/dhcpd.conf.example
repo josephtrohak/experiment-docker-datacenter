@@ -1,0 +1,45 @@
+ddns-update-style interim;
+ignore client-updates;
+
+option nbgrub-menu code 150 = text;
+
+
+subnet 10.1.2.0 netmask 255.255.255.0 {
+
+# --- default gateway
+	option routers			10.1.2.1;
+	option subnet-mask		255.255.255.0;
+
+	option nis-domain		"domain.org";
+	option domain-name-servers	10.1.2.1;
+
+	option time-offset		-18000;	# Eastern Standard Time
+#	option ntp-servers		192.168.1.1;
+#	option netbios-name-servers	192.168.1.1;
+# --- Selects point-to-point node (default is hybrid). Don't change this unless
+# -- you understand Netbios very well
+#	option netbios-node-type 2;
+
+
+	range dynamic-bootp 10.1.2.100 10.1.2.105;
+	default-lease-time 21600;
+	max-lease-time 43200;
+	next-server 10.1.2.1;
+	filename "/pxes/pxes-0.8.nbi";
+
+	host pxes {
+		hardware ethernet 00:50:56:40:00:66;
+		fixed-address 10.1.2.106;
+		option tftp-server-name "10.1.2.1";
+		log(debug, substring(option vendor-class-identifier, 0, 9));
+		if substring (option vendor-class-identifier, 0, 9) = "PXEClient" {
+			filename "/pxes/grub/pxegrub";
+      }
+		elsif substring (option vendor-class-identifier, 0, 9) = "Etherboot" {
+			filename "/pxes/grub/nbgrub";
+			#option vendor-encapsulated-options 3c:09:45:74:68:65:72:62:6f:6f:74:ff;
+		}
+		option nbgrub-menu "(nd)/pxes/grub/menu.lst";
+		option root-path "10.1.2.2:/opt/ltsp/i386";
+	}
+}
