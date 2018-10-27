@@ -727,4 +727,9 @@ docker create --name=calibre-web --restart=always \
 -p 8083:8083 \
 technosoft2000/calibre-web
 
+docker create --name=calibre-web --restart=always --network=host -v /homes/merus/Desktop/downloads/media/ebook-library:/books -v /home/merus/downloads/Desktop/docker/calibre-web/config:/calibre-web/config -e USE_CONFIG_DIR=true -e SET_CONTAINER_TIMEZONE=true -e "CONTAINER_TIMEZONE=US/New_York" -e PGID=65539 -e PUID=1029 -p 8083:8083 technosoft2000/calibre-web
+
+# works
+docker create --name=calibre-web --restart=always -v /home/merus/Desktop/downloads/media/ebook-library:/books -v /home/merus/Desktop/downloads/docker/calibre-web/config:/calibre-web/config -e USE_CONFIG_DIR=true -e SET_CONTAINER_TIMEZONE=true -e "CONTAINER_TIMEZONE=US/New_York" -e PGID=65539 -e PUID=1029 -p 8083:8083 technosoft2000/calibre-web
+
 docker start calibre-web
